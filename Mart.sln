@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartWeb_Server", "MartWeb_Server\MartWeb_Server.csproj", "{57F68253-8BF3-45A5-BC87-3D0E865A88EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57F68253-8BF3-45A5-BC87-3D0E865A88EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57F68253-8BF3-45A5-BC87-3D0E865A88EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57F68253-8BF3-45A5-BC87-3D0E865A88EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57F68253-8BF3-45A5-BC87-3D0E865A88EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FAE980F-C05E-493B-93BF-FAF900AAA914}
+	EndGlobalSection
+EndGlobal
