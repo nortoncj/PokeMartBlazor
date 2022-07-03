@@ -1,0 +1,126 @@
+﻿@page "/learnBlazor/bindProp"
+<h2 class="text-success">Individual Product</h2>
+<div class="row">
+<div class="col-6 border p-3">
+    <h3 class="text-primary">Product Settings</h3><hr />
+    <div class="form-check">
+        <label class="form-check-label" for="flexCheckChecked">Activate</label>
+        <input class="form-check-input" type="checkbox" value="" id="checkActive" @bind="@Product.IsActive" @bind:event="oninput" />
+    </div>
+    <div class="col-md-2">
+        <select @bind="selectedProp" class="form-select">
+            @foreach (var prop in Product.ProductProperties)
+            {
+                <option value="@prop.Key">@prop.Key</option>
+            }
+        </select>
+    </div>
+    <br />
+
+    <br />
+    <div>$ <input @bind="@Product.Price" @bind:event="oninput" /></div>
+
+</div>
+<br />
+<div class="col-6 border p-3">
+    <h3 class="text-primary">Product Summary</h3><hr />
+    Name: @Product.Name <br />
+    Active: @Product.IsActive<br />
+    Price: $ @Product.Price<br />
+    This Product is: @(Product.IsActive?"IsActive":"InActive")<br />
+    Property Selected: @selectedProp<br />
+
+    @if (!String.IsNullOrWhiteSpace(selectedProp))
+    {
+        <p>Property Value: @Product.ProductProperties.FirstOrDefault(u=>u.Key==selectedProp).Value</p>
+    }
+</div>
+<div class="col-12 pt-4">
+    <h2 class="text-success">Product Table</h2>
+     <table class=" table table-striped">
+        <thead>
+            <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Price (USD) </th>
+        <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var prod in Products)
+        {
+            <tr>
+            <th scope="row">@prod.Id</th>
+            <td> <input type="text" @bind="@prod.Name" @bind:event="oninput"/>   </td>
+            <td>$ <input type="number" @bind="@prod.Price" @bind:event="oninput"/>  </td>
+            <td> <div class="form-check">
+        <label class="form-check-label" for="flexCheckChecked">Activate</label>
+        <input class="form-check-input" type="checkbox" value="" id="checkActive" @bind="@prod.IsActive" @bind:event="oninput" />
+    </div>  </td>
+        </tr>
+        }
+        
+    </tbody>    
+
+    </table>
+</div>
+
+<div class="col-12 border p-3">
+    <h3 class="">Product Summary</h3><hr />
+    @foreach (var prod in Products)
+        {
+            <p>@prod.Name [ @prod.Price ] @(prod.IsActive ? "is Active" : "is InActive")</p>
+               <br />
+        }
+        
+</div>
+</div>
+@code {
+    private string selectedProp = "";
+    Demo_Product Product = new()
+        {
+            Id = 1,
+            Name = "Charizard",
+            IsActive = true,
+            Price = 5.99,
+            ProductProperties = new List<Demo_ProductProp>()
+            {
+                new Demo_ProductProp { Id = 1, Key = "Color", Value = "Black"},
+                new Demo_ProductProp { Id = 2, Key = "Edition", Value = "Diamond"},
+                new Demo_ProductProp { Id = 3, Key = "Size", Value = "large"},
+            }
+        };
+
+    List<Demo_Product> Products = new();
+
+    protected override void OnInitialized()
+    {
+        Products.Add(new()
+            {
+                Id = 1,
+                Name = "Blaziken",
+                IsActive = false,
+                Price = 15.99,
+                ProductProperties = new()
+                {
+                new Demo_ProductProp { Id = 1, Key = "Edition", Value = "Rose"},
+                     new Demo_ProductProp { Id = 2, Key = "Size", Value = "Regular"},
+                    new Demo_ProductProp { Id = 3, Key = "Color", Value="Purple" }
+                }
+            });
+
+        Products.Add(new()
+        {
+            Id = 2,
+            Name = "Lapras",
+            IsActive = true,
+            Price = 25.99,
+            ProductProperties = new()
+            {
+                new Demo_ProductProp { Id = 1, Key = "Size", Value = "Small" },
+                new Demo_ProductProp { Id = 2, Key = "Edition", Value = "Classic" },
+                new Demo_ProductProp {Id = 3,Key = "Color",Value = "White"}
+            }
+        });
+    }
+}
