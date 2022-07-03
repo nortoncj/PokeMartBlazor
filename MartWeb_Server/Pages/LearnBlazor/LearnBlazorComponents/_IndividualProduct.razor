@@ -1,0 +1,54 @@
+﻿<div class=" bg-light card col-4 border m-3 p-3" style="max-width = 18rem;" @onclick="(args)=>ProductSelected(args,Product.Name)">
+            <div class="card-header bg-light d-flex ">
+                <div class="me-auto">Product - @Product.Id</div> <div class="form-check d-flex flex-md-row-reverse px-2">
+                        <label class="form-check-label" for="flexCheckChecked">Favorite</label>
+                        <input class="form-check-input mx-2" type="checkbox" value="" id="checkFavorite" @onchange="FavoriteUpdated"  />
+                        </div></div>
+            <div class="card-body">
+                 
+                        
+                <h5 class="card-title">Name : @Product.Name </h5>
+                <p class="card-text">
+                   
+                        <div class="form-check">
+                        <label class="form-check-label" for="flexCheckChecked">Show Properties</label>
+                        <input class="form-check-input" type="checkbox" value="" id="checkActive" @bind="@Product.IsActive" @bind:event="oninput" />
+                    </div>
+                </p>
+                @if (Product.IsActive)
+                {
+                    @foreach (var prop in Product.ProductProperties)
+                    {
+                        <p class="card-text">@prop.Key : @prop.Value  </p>
+
+                    }
+                }
+
+
+                <div class="" id="buttons">
+                    <_EditDeleteButton IsActive="@Product.IsActive">
+                    </_EditDeleteButton>
+                </div>
+            </div>
+        </div>
+
+@code {
+    [Parameter]
+    public Demo_Product Product { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnFavoriteUpdated { get; set; }
+
+    private async Task FavoriteUpdated(ChangeEventArgs e)
+    {
+        await OnFavoriteUpdated.InvokeAsync((bool)e.Value);
+    }
+
+    [Parameter]
+    public EventCallback<string> SelectedProduct { get; set; }
+
+    private async Task ProductSelected(MouseEventArgs e, string name)
+    {
+        await SelectedProduct.InvokeAsync(name);
+    }
+}

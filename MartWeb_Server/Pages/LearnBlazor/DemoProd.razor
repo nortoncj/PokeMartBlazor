@@ -1,5 +1,10 @@
 ﻿@page "/LearnBlazor/demoproduct"
 <h3 class="text-primary">Demo Product</h3>
+<p class="text-secondary">Favorite Total: @SelectedFavoriteCount</p>
+@if (!string.IsNullOrWhiteSpace(LastSelected))
+{
+  <p class="">Last Selected: @LastSelected</p>  
+}
 
 <div class="row border p-3">
 
@@ -7,32 +12,7 @@
     @foreach (var prod in Products)
     {
 
-        <div class=" bg-light card col-4 border m-3 p-3" style="max-width= 18rem;">
-            <div class="card-header bg-light">Product - @prod.Id </div>
-            <div class="card-body">
-                <h5 class="card-title">Name : @prod.Name </h5>
-                <p class="card-text">
-                    <div class="form-check">
-                        <label class="form-check-label" for="flexCheckChecked">Show Properties</label>
-                        <input class="form-check-input" type="checkbox" value="" id="checkActive" @bind="@prod.IsActive" @bind:event="oninput" />
-                    </div>
-                </p>
-                @if (prod.IsActive)
-                {
-                    @foreach (var prop in prod.ProductProperties)
-                    {
-                        <p class="card-text">@prop.Key : @prop.Value  </p>
-
-                    }
-                }
-
-
-                <div class="" id="buttons">
-                    <_EditDeleteButton>
-                    </_EditDeleteButton>
-                </div>
-            </div>
-        </div>
+        <_IndividualProduct Product="prod" OnFavoriteUpdated="FavoriteCountUpdate" SelectedProduct="ProductClick"></_IndividualProduct>
 
     }
 
@@ -41,6 +21,10 @@
 </div>
 @code {
     List<Demo_Product> Products = new();
+
+    private int SelectedFavoriteCount { get; set; } = 0;
+
+    private string LastSelected { get; set; } = " ";
 
     protected override void OnInitialized()
     {
@@ -71,5 +55,24 @@
                 new Demo_ProductProp {Id = 3,Key = "Color",Value = "White"}
             }
             });
+    }
+
+    protected void FavoriteCountUpdate(bool isSelected)
+    {
+        if (isSelected)
+        {
+            SelectedFavoriteCount++;
+        }
+        else
+        {
+            SelectedFavoriteCount--;
+        }
+    }
+
+    protected void ProductClick(string productName)
+    {
+
+        LastSelected = productName;
+        
     }
 }
