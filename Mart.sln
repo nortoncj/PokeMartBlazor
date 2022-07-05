@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartWeb_Server", "MartWeb_Server\MartWeb_Server.csproj", "{57F68253-8BF3-45A5-BC87-3D0E865A88EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartWeb_Server", "MartWeb_Server\MartWeb_Server.csproj", "{57F68253-8BF3-45A5-BC87-3D0E865A88EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartWeb_Client", "MartWeb_Client\MartWeb_Client.csproj", "{763D825F-DEF0-4BF7-AFA2-62417CC505F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartWeb_Client", "MartWeb_Client\MartWeb_Client.csproj", "{763D825F-DEF0-4BF7-AFA2-62417CC505F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mart_Models", "Mart_Models\Mart_Models.csproj", "{0C10B3EB-31A4-4874-8883-2AD43F6BB16A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mart_Models", "Mart_Models\Mart_Models.csproj", "{0C10B3EB-31A4-4874-8883-2AD43F6BB16A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
