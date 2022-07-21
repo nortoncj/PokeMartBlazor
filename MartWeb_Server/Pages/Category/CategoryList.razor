@@ -27,7 +27,7 @@
                             </td>
                             <td>
                                 <NavLink href="" class="btn btn-success">Edit</NavLink>
-                                <NavLink href="" class="btn btn-danger">Delete</NavLink>
+                                
                             </td>
                             
                         </tr>
@@ -35,15 +35,37 @@
                 </tbody>
             </table>
         }
+        else
+        {
+            if (IsLoading)
+            {
+                //loading gif
+                <div class="d-flex justify-content-center">
+                  <div class="spinner-border" role="status">
+                    <span class="sr-only"></span>
+                  </div>
+                </div>
+            }else
+            {
+                //no records
+                <p>No records found</p>
+            }
+        }
     </div>
 </div>
 
 
 @code {
     private IEnumerable<CategoryDTO> Categories { get; set; } = new List<CategoryDTO>();
+    public bool IsLoading { get; set; } = true;
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Run(LoadCategories);
+    }
 
-    protected override void OnInitialized()
+    private void LoadCategories()
     {
         Categories = _categoryRepository.GetAll();
+        IsLoading = false;
     }
 }
