@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartWeb_Client", "MartWeb_C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mart_Models", "Mart_Models\Mart_Models.csproj", "{0C10B3EB-31A4-4874-8883-2AD43F6BB16A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mart_Business", "Mart_Business\Mart_Business.csproj", "{C530F676-A1BF-4450-B1D3-3584C20CB738}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mart_Business", "Mart_Business\Mart_Business.csproj", "{C530F676-A1BF-4450-B1D3-3584C20CB738}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mart_Common", "Mart_Common\Mart_Common.csproj", "{DC250496-64BE-4CC5-A7FF-FD217001E51C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mart_Common", "Mart_Common\Mart_Common.csproj", "{DC250496-64BE-4CC5-A7FF-FD217001E51C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mart_DataAccess", "Mart_DataAccess\Mart_DataAccess.csproj", "{C6AC6082-1520-42A7-B569-3A312EEBE855}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mart_DataAccess", "Mart_DataAccess\Mart_DataAccess.csproj", "{C6AC6082-1520-42A7-B569-3A312EEBE855}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
