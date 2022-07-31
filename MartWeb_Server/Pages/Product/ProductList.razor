@@ -30,10 +30,10 @@
                                 @prod.Name
                             </td>
                             <td>
-                                <InputCheckbox disabled checked="@prod.ShopFavorites"></InputCheckbox>
+                                 <input type="checkbox" disabled checked="@prod.ShopFavorites">
                             </td>
                             <td>
-                                <InputCheckbox disabled checked="@prod.CustomerFavorites"></InputCheckbox>
+                                <input type="checkbox" disabled checked="@prod.CustomerFavorites">
                             </td>
                             <td>@prod.Category.Name</td>
                             <td>
@@ -70,7 +70,7 @@
 @code {
     private IEnumerable<ProductDTO> Products { get; set; } = new List<ProductDTO>();
     public bool IsLoading { get; set; }
-    private int DeleteCategoryId { get; set; } = 0;
+    private int DeleteProductId { get; set; } = 0;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if(firstRender)
@@ -90,7 +90,7 @@
 
     private void HandleDelete(int id)
     {
-        DeleteCategoryId = id;
+        DeleteProductId = id;
         _jsRuntime.InvokeVoidAsync("ShowDeleteConfirmationModal");
 
     }
@@ -99,10 +99,10 @@
     {
         IsLoading = true;
 
-        if(isConfirmed && DeleteCategoryId != 0)
+        if(isConfirmed && DeleteProductId != 0)
         {
             //delete
-           await _productRepository.Delete(DeleteCategoryId);
+           await _productRepository.Delete(DeleteProductId);
             await LoadProducts();
             await _jsRuntime.InvokeVoidAsync("HideDeleteConfirmationModal");
         }
