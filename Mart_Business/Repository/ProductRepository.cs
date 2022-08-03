@@ -57,7 +57,7 @@ namespace Mart_Business.Repository
 
         public async Task<IEnumerable<ProductDTO>> GetAll()
         {
-            return _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDTO>>(_db.Products.Include(u => u.Category));
+            return _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDTO>>(_db.Products.Include(u =>u.Category));
         }
 
         public async Task<ProductDTO> Update(ProductDTO objDTO)
