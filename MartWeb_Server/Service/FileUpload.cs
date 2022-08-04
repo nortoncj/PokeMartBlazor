@@ -15,9 +15,9 @@ namespace MartWeb_Server.Service
 
         public bool DeleteFile(string filePath)
         {
-            if (File.Exists(_webHostEnvironment.WebRootPath + filePath))
+            if (File.Exists(_webHostEnvironment.WebRootPath+filePath))
             {
-                File.Delete(_webHostEnvironment.WebRootPath + filePath);
+                File.Delete(_webHostEnvironment.WebRootPath+filePath);
                 return true;
             }
             return false;
@@ -26,7 +26,7 @@ namespace MartWeb_Server.Service
         public async Task<string> UploadFile(IBrowserFile file)
         {
             FileInfo fileInfo = new(file.Name);
-            var fileName = Guid.NewGuid().ToString() + fileInfo.Extension;
+            var fileName = Guid.NewGuid().ToString()+fileInfo.Extension;
             var folderDirectory = $"{_webHostEnvironment.WebRootPath}\\img\\product";
             if (!Directory.Exists(folderDirectory))
             {
