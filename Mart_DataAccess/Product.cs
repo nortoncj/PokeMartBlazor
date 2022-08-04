@@ -21,6 +21,6 @@ namespace Mart_DataAccess
         public string ImageUrl { get; set; }
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
-        public string Category { get; set; }
+        public Category Category { get; set; }
     }
 }
