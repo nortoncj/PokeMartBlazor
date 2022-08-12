@@ -12,12 +12,19 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="20.2.0.43" />
+    <PackageReference Include="Syncfusion.Blazor.RichTextEditor" Version="20.2.0.40" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.2.0.40" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Mart_Business\Mart_Business.csproj" />
     <ProjectReference Include="..\Mart_DataAccess\Mart_DataAccess.csproj" />
     <ProjectReference Include="..\Mart_Models\Mart_Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\img\product\" />
   </ItemGroup>
 
 </Project>

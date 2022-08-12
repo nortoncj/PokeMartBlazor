@@ -41,7 +41,7 @@
                             <td>@prod.Category.Name</td>
                             <td>
                                 <NavLink href="@($"product/edit/{prod.Id}")" class="btn btn-secondary">Edit</NavLink>
-                                <NavLink @onclick="() =>HandleDelete(prod.Id)" class="btn btn-success">Price</NavLink>
+                                <NavLink href="@($"product/price/{prod.Id}")" class="btn btn-success">Price</NavLink>
                                 <button class="btn btn-danger" @onclick="()=>HandleDelete(prod.Id)">Delete</button>
                             </td>                            
                         </tr>
@@ -107,7 +107,7 @@
         {
             //delete
             ProductDTO product = await _productRepository.Get(DeleteProductId);
-            if (!product.ImageUrl.Contains("default.jpg"))
+            if (!product.ImageUrl.Contains("default.png"))
             {
                 _fileUpload.DeleteFile(product.ImageUrl);
             }
