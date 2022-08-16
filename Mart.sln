@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mart_Common", "Mart_Common\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mart_DataAccess", "Mart_DataAccess\Mart_DataAccess.csproj", "{C6AC6082-1520-42A7-B569-3A312EEBE855}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mart_API", "Mart_API\Mart_API.csproj", "{6331DE8C-ED0E-4F69-8A08-5DF2BBBDE8BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mart_API", "Mart_API\Mart_API.csproj", "{6331DE8C-ED0E-4F69-8A08-5DF2BBBDE8BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
