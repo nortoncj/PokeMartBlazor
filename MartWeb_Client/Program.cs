@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using MartWeb_Client;
 using MartWeb_Client.Service;
 using MartWeb_Client.Service.IService;
@@ -10,4 +11,5 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration.GetValue<string>("BaseAPIUrl")) });
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddBlazoredLocalStorage();
 await builder.Build().RunAsync();
