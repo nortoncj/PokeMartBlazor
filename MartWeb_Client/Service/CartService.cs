@@ -8,41 +8,43 @@ namespace MartWeb_Client.Service
     public class CartService : ICartService
     {
         private readonly ILocalStorageService _localStorage;
+        public event Action OnChange;
         public CartService(ILocalStorageService localStorageService)
         {
             _localStorage = localStorageService;
         }
-        public async Task DecrementCart(Cart cartToDecrement)
+        public async Task DecrementCart(ShoppingCart cartToDecrement)
         {
-            var shoppingCart = await _localStorage.GetItemAsync<List<Cart>>(SD.Cart);
-            for(int i=0; i < shoppingCart.Count; i++)
+            var cart = await _localStorage.GetItemAsync<List<ShoppingCart>>(SD.ShoppingCart);
+            for(int i=0; i < cart.Count; i++)
             {
-                if (shoppingCart[i].ProductId == cartToDecrement.ProductId && shoppingCart[i].ProductPriceId == cartToDecrement.ProductPriceId)
+                if (cart[i].ProductId == cartToDecrement.ProductId && cart[i].ProductPriceId == cartToDecrement.ProductPriceId)
                 {
-                    if (shoppingCart[i].Count == 1 || shoppingCart[i].Count == 0)
+                    if (cart[i].Count == 1 || cartToDecrement.Count == 0)
                     {
-                        shoppingCart.Remove(shoppingCart[i]);
+                        cart.Remove(cart[i]);
                     }
                     else
                     {
-                        shoppingCart[i].Count -= cartToDecrement.Count;
+                        cart[i].Count -= cartToDecrement.Count;
                     }
                 }
             }
-            await _localStorage.SetItemAsync(SD.Cart, shoppingCart);
+            await _localStorage.SetItemAsync(SD.ShoppingCart, cart);
+            OnChange.Invoke();
         }
     
 
-        public async Task IncrementCart(Cart cartToAdd)
+        public async Task IncrementCart(ShoppingCart cartToAdd)
         {
-            var shoppingCart = await _localStorage.GetItemAsync<List<Cart>>(SD.Cart);
+            var cart = await _localStorage.GetItemAsync<List<ShoppingCart>>(SD.ShoppingCart);
             bool itemInCart = false;
 
-            if(shoppingCart == null)
+            if(cart == null)
             {
-                shoppingCart = new List<Cart>();
+                cart = new List<ShoppingCart>();
             }
-            foreach(var obj in shoppingCart)
+            foreach(var obj in cart)
             {
                 if(obj.ProductId == cartToAdd.ProductId && obj.ProductPriceId == cartToAdd.ProductPriceId)
                 {
@@ -52,14 +54,15 @@ namespace MartWeb_Client.Service
             }
             if (!itemInCart)
             {
-                shoppingCart.Add(new Cart()
+                cart.Add(new ShoppingCart()
                 {
                     ProductId = cartToAdd.ProductId,
                     ProductPriceId = cartToAdd.ProductPriceId,
                     Count = cartToAdd.Count
                 });
             }
-            await _localStorage.SetItemAsync(SD.Cart, shoppingCart);
+            await _localStorage.SetItemAsync(SD.ShoppingCart, cart);
+            OnChange.Invoke();
         }
     }
 }

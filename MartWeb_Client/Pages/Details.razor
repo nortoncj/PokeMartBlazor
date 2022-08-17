@@ -1,5 +1,8 @@
 ﻿@page "/details/{ProductId:int}"
 @inject IProductService _productService
+@inject ICartService _cartService
+@inject NavigationManager _navigationManager
+@inject IJSRuntime  _jsRuntime
 @using MartWeb_Client.ViewModels
 
 @if (IsProcessing)
@@ -122,6 +125,15 @@ else
 
     private async Task AddToCart()
     {
-        
+        ShoppingCart shoppingcart = new()
+            {
+                Count = DetailsVM.Count,
+                ProductId = ProductId,
+                ProductPriceId = DetailsVM.SelectedProductPriceId
+            };
+
+            await _cartService.IncrementCart(shoppingcart);
+            _navigationManager.NavigateTo("/");
+            await _jsRuntime.ToastrSuccess("Product added to cart");
     }
 }

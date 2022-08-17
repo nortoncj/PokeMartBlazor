@@ -4,7 +4,8 @@ namespace MartWeb_Client.Service.IService
 {
     public interface ICartService
     {
-        Task DecrementCart(Cart cart);
-        Task IncrementCart(Cart cart);
+        public event Action OnChange;
+        Task DecrementCart(ShoppingCart shoppingCart);
+        Task IncrementCart(ShoppingCart shoppingCart);
     }
 }
