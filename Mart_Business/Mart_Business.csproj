@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Mart_Common\Mart_Common.csproj" />
     <ProjectReference Include="..\Mart_DataAccess\Mart_DataAccess.csproj" />
     <ProjectReference Include="..\Mart_Models\Mart_Models.csproj" />
   </ItemGroup>

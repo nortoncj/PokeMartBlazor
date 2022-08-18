@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Mart_DataAccess;
+using Mart_DataAccess.ViewModel;
 using Mart_Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Mart_Business.Mapper
             CreateMap<Category, CategoryDTO>().ReverseMap();
             CreateMap<Product, ProductDTO>().ReverseMap();
             CreateMap<ProductPrice, ProductPriceDTO>().ReverseMap();
+            
         }
     }
 }
