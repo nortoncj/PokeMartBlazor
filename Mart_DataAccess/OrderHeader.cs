@@ -11,19 +11,23 @@ namespace Mart_DataAccess
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
         public string UserId { get; set; }
         // add nagivation property : #TODO
 
         [Required]
+        [Display(Name = "Order Total")]
         public double OrderTotal { get; set; }
 
         [Required]
         public DateTime OrderDate { get; set; }
         [Required]
+        [Display(Name="Shipping Date")]
         public DateTime ShippingDate { get; set; }
         [Required]
         public string Status { get; set; }
+
         //stripe payment
         public string? SessionId { get; set; }
         public string? PaymentIntentId { get; set; }
@@ -39,8 +43,8 @@ namespace Mart_DataAccess
         [Required]
         public string City { get; set; }
         [Required]
+        [Display(Name="Postal Code")] 
         public string PostalCode { get; set; }
-        [Required]
-        public string Email { get; set; }
+        
     }
 }

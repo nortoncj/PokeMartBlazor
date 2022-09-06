@@ -17,8 +17,6 @@ namespace Mart_DataAccess
 
         [Required]
         public int ProductId { get; set; }
-        [ForeignKey("ProductId")]
-        [NotMapped]
         public ProductDTO Product { get; set; }
 
         [Required]
@@ -29,5 +27,7 @@ namespace Mart_DataAccess
         public string Size { get; set; }
         [Required]
         public string ProductName { get; set; }
+
+
     }
 }
